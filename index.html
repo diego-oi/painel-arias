@@ -9,21 +9,40 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --navy:#0F2747;
-  --navy-deep:#0A1B33;
-  --card:#152E54;
+  /* tema escuro (padrão de contraste) */
+  --bg:#0F2747;
+  --tile:#152E54;
+  --saq:#0A1B33;
+  --tx:#F7F8FA;
+  --tx2:#A7ADB5;
   --gold:#B08C28;
   --gold-soft:#C9A544;
-  --white:#F7F8FA;
-  --gray:#A7ADB5;
+  --saq-gold:#C9A544;
+  --saq-tx:#F7F8FA;
+  --saq-tx2:#A7ADB5;
   --line:rgba(247,248,250,.12);
   --gold-line:rgba(176,140,40,.55);
+}
+body.claro{
+  /* tema claro — logo em fundo branco */
+  --bg:#F7F8FA;
+  --tile:#FFFFFF;
+  --saq:#0F2747;
+  --tx:#0F2747;
+  --tx2:#5C6570;
+  --gold:#B08C28;
+  --gold-soft:#8F711F;
+  --saq-gold:#C9A544;
+  --saq-tx:#F7F8FA;
+  --saq-tx2:#C6CCD4;
+  --line:rgba(15,39,71,.15);
+  --gold-line:rgba(176,140,40,.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  background:var(--navy);
-  color:var(--white);
+  background:var(--bg);
+  color:var(--tx);
   font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
   overflow:hidden;
   cursor:none;
@@ -43,6 +62,17 @@ body{
   gap:24px;
   flex-wrap:wrap;
 }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:clamp(10px,1.8vw,26px);
+}
+.logo{
+  height:clamp(44px,9vh,110px);
+  width:auto;
+  mix-blend-mode:lighten;
+}
+body.claro .logo{mix-blend-mode:multiply}
 .brand .name{
   font-family:Montserrat,Inter,sans-serif;
   font-weight:700;
@@ -66,7 +96,7 @@ body{
   line-height:1;
 }
 .date{
-  color:var(--gray);
+  color:var(--tx2);
   font-size:clamp(10px,1.7vh,19px);
   margin-top:.35em;
   letter-spacing:.03em;
@@ -87,7 +117,7 @@ main{
   gap:clamp(12px,2.2vw,28px);
 }
 .tile{
-  background:var(--card);
+  background:var(--tile);
   border:1px solid var(--line);
   border-top:3px solid var(--gold);
   border-radius:12px;
@@ -112,13 +142,36 @@ main{
   white-space:nowrap;
 }
 .kpi-value.fit{font-size:clamp(28px,7vh,90px)}
+/* ---- campos extras (linhas "info:" do dados.txt) ---- */
+.infos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(clamp(180px,22vw,320px),1fr));
+  gap:clamp(12px,2.2vw,28px);
+}
+.infos:empty{display:none}
+.info-tile{
+  background:var(--tile);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:clamp(10px,2vh,24px) clamp(14px,2vw,30px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(4px,.9vh,10px);
+}
+.info-tile .label{font-size:clamp(10px,1.7vh,19px)}
+.info-value{
+  font-weight:700;
+  font-size:clamp(20px,4.6vh,58px);
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+}
 /* ---- saques ---- */
 .sec-head{
   display:flex;
   align-items:center;
   gap:clamp(10px,1.5vw,20px);
 }
-.sec-head .label{color:var(--white)}
+.sec-head .label{color:var(--tx)}
 .sec-head::after{
   content:"";
   flex:1;
@@ -130,7 +183,7 @@ main{
   gap:clamp(12px,2.2vw,28px);
 }
 .saque{
-  background:var(--navy-deep);
+  background:var(--saq);
   border:1px solid var(--line);
   border-radius:12px;
   padding:clamp(12px,2.4vh,28px) clamp(16px,2.2vw,32px);
@@ -142,10 +195,11 @@ main{
   font-family:Montserrat,Inter,sans-serif;
   font-weight:700;
   font-size:clamp(16px,3.2vh,38px);
-  color:var(--gold-soft);
+  color:var(--saq-gold);
   letter-spacing:.04em;
 }
 .saque .valor{
+  color:var(--saq-tx);
   font-weight:700;
   font-size:clamp(24px,6vh,74px);
   font-variant-numeric:tabular-nums;
@@ -153,11 +207,11 @@ main{
   white-space:nowrap;
 }
 .saque .clientes{
-  color:var(--gray);
+  color:var(--saq-tx2);
   font-size:clamp(12px,2.2vh,24px);
 }
 .nota{
-  color:var(--gray);
+  color:var(--tx2);
   font-size:clamp(11px,2vh,22px);
   text-align:center;
 }
@@ -175,12 +229,12 @@ main{
 .tagline{
   font-family:Montserrat,Inter,sans-serif;
   font-weight:500;
-  color:var(--gray);
+  color:var(--tx2);
   font-size:clamp(10px,1.8vh,20px);
   letter-spacing:.04em;
 }
 .updated{
-  color:var(--gray);
+  color:var(--tx2);
   font-size:clamp(10px,1.6vh,18px);
   letter-spacing:.06em;
   text-transform:uppercase;
@@ -198,8 +252,11 @@ main{
 <div class="board">
   <header class="top">
     <div class="brand">
-      <div class="name">ARIAS COMPANY</div>
-      <div class="sub">Arquitetura Patrimonial</div>
+      <img id="logo" class="logo" src="logo-clara.png" alt="Arias Company">
+      <div>
+        <div class="name">ARIAS COMPANY</div>
+        <div class="sub">Arquitetura Patrimonial</div>
+      </div>
     </div>
     <div class="head-r">
       <div class="clock" id="clock"></div>
@@ -218,6 +275,7 @@ main{
         <div class="kpi-value fit" id="v-carteira">—</div>
       </div>
     </div>
+    <div class="infos" id="infos"></div>
     <div class="sec-head"><div class="label">Solicitações de saque</div></div>
     <div class="saques" id="saques"></div>
     <div class="nota" id="v-nota"></div>
@@ -230,6 +288,7 @@ main{
 
 <script type="application/json" id="dados-locais">
 {
+  "tema": "claro",
   "clientes_ativos": "128",
   "valor_carteira": "R$ 4.250.000,00",
   "nota": "",
@@ -267,10 +326,23 @@ setInterval(tick,15000);
 
 /* ---- renderização ---- */
 function render(d){
+  var claro=(d.tema||"claro").toLowerCase()!=="escuro";
+  document.body.classList.toggle("claro",claro);
+  el("logo").src=claro?"logo-clara.png":"logo.png";
   el("v-clientes").textContent=d.clientes_ativos||"—";
   el("v-carteira").textContent=d.valor_carteira||"—";
   el("v-nota").textContent=d.nota||"";
   el("v-updated").textContent=d.atualizado?("Atualizado em "+d.atualizado):"";
+  var ibox=el("infos");
+  ibox.innerHTML="";
+  (d.infos||[]).forEach(function(it){
+    if(!it.rotulo&&!it.valor)return;
+    var t=document.createElement("div");t.className="info-tile";
+    var lb=document.createElement("div");lb.className="label";lb.textContent=it.rotulo;
+    var vv=document.createElement("div");vv.className="info-value";vv.textContent=it.valor;
+    t.appendChild(lb);t.appendChild(vv);
+    ibox.appendChild(t);
+  });
   var box=el("saques");
   box.innerHTML="";
   var list=d.saques||[];
@@ -288,7 +360,7 @@ function render(d){
 
 /* ---- leitura do dados.txt (formato "campo: valor") ---- */
 function fromTXT(text){
-  var d={saques:[]};
+  var d={saques:[],infos:[]};
   text.split(/\r?\n/).forEach(function(line){
     line=line.trim();
     if(!line||line.charAt(0)==="#")return;
@@ -299,6 +371,9 @@ function fromTXT(text){
     if(key==="saque"){
       var p=val.split("|").map(function(s){return s.trim()});
       d.saques.push({data:p[0]||"",clientes:p[1]||"",valor:p[2]||""});
+    }else if(key==="info"){
+      var q=val.split("|").map(function(s){return s.trim()});
+      d.infos.push({rotulo:q[0]||"",valor:q[1]||""});
     }else{
       d[key]=val;
     }

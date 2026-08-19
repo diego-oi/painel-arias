@@ -4,12 +4,22 @@
 #  Linhas que começam com # são ignoradas pelo painel.
 # =====================================================
 
+# Tema do painel: claro (fundo branco) ou escuro (fundo azul-marinho)
+tema: claro
+
 clientes_ativos: 203
 valor_carteira: R$ 4.713.444,24
 atualizado: 19/08/2026
 
 # Observação opcional exibida no centro do painel:
 nota:
+
+# Campos extras (opcionais) — cada linha vira um cartão no painel
+# Formato: nome do campo | valor
+# Exemplos (remova o # do início para ativar):
+# info: Novos clientes no mês | 12
+# info: Rendimento médio | 1,8%
+# info: Próximo fechamento | 15/09
 
 # Solicitações de saque
 # Formato: data | quantidade de clientes | valor do montante
