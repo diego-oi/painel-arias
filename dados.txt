@@ -4,7 +4,7 @@
 #  Linhas que começam com # são ignoradas pelo painel.
 # =====================================================
 
-clientes_ativos: 128
+clientes_ativos: 12
 valor_carteira: R$ 4.250.000,00
 atualizado: 19/08/2026
 
