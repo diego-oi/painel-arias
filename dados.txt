@@ -4,8 +4,8 @@
 #  Linhas que começam com # são ignoradas pelo painel.
 # =====================================================
 
-clientes_ativos: 12
-valor_carteira: R$ 4.250.000,00
+clientes_ativos: 203
+valor_carteira: R$ 4.713.444,24
 atualizado: 19/08/2026
 
 # Observação opcional exibida no centro do painel:
@@ -13,5 +13,5 @@ nota:
 
 # Solicitações de saque
 # Formato: data | quantidade de clientes | valor do montante
-saque: 15/07 | 12 | R$ 85.000,00
-saque: 15/08 | 8 | R$ 62.000,00
+saque: 15/07 | 12 | R$ 68.313,00
+saque: 15/08 | 8 | R$ 39.100,20
