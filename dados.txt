@@ -1,0 +1,17 @@
+# =====================================================
+#  PAINEL ARIAS — DADOS DO DIA
+#  Edite apenas o que vem depois dos dois-pontos ( : )
+#  Linhas que começam com # são ignoradas pelo painel.
+# =====================================================
+
+clientes_ativos: 128
+valor_carteira: R$ 4.250.000,00
+atualizado: 19/08/2026
+
+# Observação opcional exibida no centro do painel:
+nota:
+
+# Solicitações de saque
+# Formato: data | quantidade de clientes | valor do montante
+saque: 15/07 | 12 | R$ 85.000,00
+saque: 15/08 | 8 | R$ 62.000,00

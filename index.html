@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arias Company — Demonstrativo de Posição</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0F2747;
+  --navy-deep:#0A1B33;
+  --card:#152E54;
+  --gold:#B08C28;
+  --gold-soft:#C9A544;
+  --white:#F7F8FA;
+  --gray:#A7ADB5;
+  --line:rgba(247,248,250,.12);
+  --gold-line:rgba(176,140,40,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--navy);
+  color:var(--white);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
+  overflow:hidden;
+  cursor:none;
+}
+.board{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  padding:clamp(14px,3.5vh,44px) clamp(18px,4.5vw,76px);
+  gap:clamp(10px,2.2vh,26px);
+}
+/* ---- cabeçalho ---- */
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.brand .name{
+  font-family:Montserrat,Inter,sans-serif;
+  font-weight:700;
+  font-size:clamp(18px,3.4vh,40px);
+  letter-spacing:.06em;
+}
+.brand .sub{
+  color:var(--gold-soft);
+  font-family:Montserrat,Inter,sans-serif;
+  font-weight:500;
+  font-size:clamp(10px,1.7vh,19px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-top:.25em;
+}
+.head-r{text-align:right}
+.clock{
+  font-weight:600;
+  font-size:clamp(20px,4.2vh,52px);
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+}
+.date{
+  color:var(--gray);
+  font-size:clamp(10px,1.7vh,19px);
+  margin-top:.35em;
+  letter-spacing:.03em;
+}
+.rule{border:0;border-top:2px solid var(--gold-line)}
+/* ---- indicadores ---- */
+main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(12px,2.6vh,30px);
+  min-height:0;
+  justify-content:center;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(12px,2.2vw,28px);
+}
+.tile{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:3px solid var(--gold);
+  border-radius:12px;
+  padding:clamp(14px,3vh,34px) clamp(16px,2.4vw,36px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(6px,1.4vh,16px);
+}
+.label{
+  font-family:Montserrat,Inter,sans-serif;
+  font-weight:600;
+  font-size:clamp(11px,2vh,22px);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+}
+.kpi-value{
+  font-weight:700;
+  font-size:clamp(34px,9.5vh,120px);
+  font-variant-numeric:tabular-nums;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.kpi-value.fit{font-size:clamp(28px,7vh,90px)}
+/* ---- saques ---- */
+.sec-head{
+  display:flex;
+  align-items:center;
+  gap:clamp(10px,1.5vw,20px);
+}
+.sec-head .label{color:var(--white)}
+.sec-head::after{
+  content:"";
+  flex:1;
+  border-top:1px solid var(--line);
+}
+.saques{
+  display:grid;
+  grid-template-columns:repeat(var(--cols,2),1fr);
+  gap:clamp(12px,2.2vw,28px);
+}
+.saque{
+  background:var(--navy-deep);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:clamp(12px,2.4vh,28px) clamp(16px,2.2vw,32px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(4px,1vh,12px);
+}
+.saque .data{
+  font-family:Montserrat,Inter,sans-serif;
+  font-weight:700;
+  font-size:clamp(16px,3.2vh,38px);
+  color:var(--gold-soft);
+  letter-spacing:.04em;
+}
+.saque .valor{
+  font-weight:700;
+  font-size:clamp(24px,6vh,74px);
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+  white-space:nowrap;
+}
+.saque .clientes{
+  color:var(--gray);
+  font-size:clamp(12px,2.2vh,24px);
+}
+.nota{
+  color:var(--gray);
+  font-size:clamp(11px,2vh,22px);
+  text-align:center;
+}
+.nota:empty{display:none}
+/* ---- rodapé ---- */
+.bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+  flex-wrap:wrap;
+  border-top:2px solid var(--gold-line);
+  padding-top:clamp(8px,1.6vh,18px);
+}
+.tagline{
+  font-family:Montserrat,Inter,sans-serif;
+  font-weight:500;
+  color:var(--gray);
+  font-size:clamp(10px,1.8vh,20px);
+  letter-spacing:.04em;
+}
+.updated{
+  color:var(--gray);
+  font-size:clamp(10px,1.6vh,18px);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+}
+@media (max-width:700px){
+  body{cursor:auto;overflow:auto}
+  .board{height:auto;min-height:100vh}
+  .kpis,.saques{grid-template-columns:1fr}
+  .kpi-value{white-space:normal}
+}
+</style>
+</head>
+<body>
+<div class="board">
+  <header class="top">
+    <div class="brand">
+      <div class="name">ARIAS COMPANY</div>
+      <div class="sub">Arquitetura Patrimonial</div>
+    </div>
+    <div class="head-r">
+      <div class="clock" id="clock"></div>
+      <div class="date" id="date"></div>
+    </div>
+  </header>
+  <hr class="rule">
+  <main>
+    <div class="kpis">
+      <div class="tile">
+        <div class="label">Clientes ativos</div>
+        <div class="kpi-value" id="v-clientes">—</div>
+      </div>
+      <div class="tile">
+        <div class="label">Valor da carteira</div>
+        <div class="kpi-value fit" id="v-carteira">—</div>
+      </div>
+    </div>
+    <div class="sec-head"><div class="label">Solicitações de saque</div></div>
+    <div class="saques" id="saques"></div>
+    <div class="nota" id="v-nota"></div>
+  </main>
+  <footer class="bottom">
+    <div class="tagline">Inteligência para proteger, crescer e construir patrimônio.</div>
+    <div class="updated" id="v-updated"></div>
+  </footer>
+</div>
+
+<script type="application/json" id="dados-locais">
+{
+  "clientes_ativos": "128",
+  "valor_carteira": "R$ 4.250.000,00",
+  "nota": "",
+  "atualizado": "19/08/2026",
+  "saques": [
+    {"data": "15/07", "clientes": "12", "valor": "R$ 85.000,00"},
+    {"data": "15/08", "clientes": "8", "valor": "R$ 62.000,00"}
+  ]
+}
+</script>
+<script>
+(function(){
+"use strict";
+/* ============================================================
+   CONFIGURAÇÃO
+   Cole aqui o link CSV da planilha publicada (Arquivo →
+   Compartilhar → Publicar na web → formato CSV).
+   Enquanto estiver vazio, o painel usa os dados de exemplo acima.
+   ============================================================ */
+var DATA_URL = "dados.txt";
+var INTERVALO_SEGUNDOS = 60;
+
+function el(id){return document.getElementById(id)}
+
+/* ---- relógio ---- */
+function tick(){
+  var now=new Date();
+  var p=function(x){return String(x).padStart(2,"0")};
+  el("clock").textContent=p(now.getHours())+":"+p(now.getMinutes());
+  var ds=now.toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  el("date").textContent=ds.charAt(0).toUpperCase()+ds.slice(1);
+}
+tick();
+setInterval(tick,15000);
+
+/* ---- renderização ---- */
+function render(d){
+  el("v-clientes").textContent=d.clientes_ativos||"—";
+  el("v-carteira").textContent=d.valor_carteira||"—";
+  el("v-nota").textContent=d.nota||"";
+  el("v-updated").textContent=d.atualizado?("Atualizado em "+d.atualizado):"";
+  var box=el("saques");
+  box.innerHTML="";
+  var list=d.saques||[];
+  box.style.setProperty("--cols",Math.min(Math.max(list.length,1),4));
+  list.forEach(function(s){
+    var c=document.createElement("div");c.className="saque";
+    var dt=document.createElement("div");dt.className="data";dt.textContent=s.data;
+    var vl=document.createElement("div");vl.className="valor";vl.textContent=s.valor;
+    var cl=document.createElement("div");cl.className="clientes";
+    cl.textContent=s.clientes?(s.clientes+" cliente"+(s.clientes==="1"?"":"s")):"";
+    c.appendChild(dt);c.appendChild(vl);c.appendChild(cl);
+    box.appendChild(c);
+  });
+}
+
+/* ---- leitura do dados.txt (formato "campo: valor") ---- */
+function fromTXT(text){
+  var d={saques:[]};
+  text.split(/\r?\n/).forEach(function(line){
+    line=line.trim();
+    if(!line||line.charAt(0)==="#")return;
+    var i=line.indexOf(":");
+    if(i<0)return;
+    var key=line.slice(0,i).trim().toLowerCase().replace(/\s+/g,"_");
+    var val=line.slice(i+1).trim();
+    if(key==="saque"){
+      var p=val.split("|").map(function(s){return s.trim()});
+      d.saques.push({data:p[0]||"",clientes:p[1]||"",valor:p[2]||""});
+    }else{
+      d[key]=val;
+    }
+  });
+  return d;
+}
+function carregar(){
+  if(!DATA_URL){
+    render(JSON.parse(el("dados-locais").textContent));
+    return;
+  }
+  fetch(DATA_URL+(DATA_URL.indexOf("?")>-1?"&":"?")+"_="+Date.now(),{cache:"no-store"})
+    .then(function(r){if(!r.ok)throw 0;return r.text()})
+    .then(function(t){render(fromTXT(t))})
+    .catch(function(){/* mantém os últimos dados exibidos */});
+}
+carregar();
+setInterval(carregar,INTERVALO_SEGUNDOS*1000);
+
+/* recarrega a página inteira a cada 6h para TVs ligadas o dia todo */
+setInterval(function(){location.reload()},6*3600*1000);
+})();
+</script>
+</body>
+</html>
