@@ -17,11 +17,10 @@ nota:
 # Campos extras (opcionais) — cada linha vira um cartão no painel
 # Formato: nome do campo | valor
 # Exemplos (remova o # do início para ativar):
-# info: Novos clientes no mês | 12
-# info: Rendimento médio | 1,8%
-# info: Próximo fechamento | 15/09
+# info: Valor 2 Ciclos | R$ 61.142,16
+
 
 # Solicitações de saque
 # Formato: data | quantidade de clientes | valor do montante
-saque: 15/07 | 12 | R$ 68.313,00
-saque: 15/08 | 8 | R$ 40.688,91
+saque: 15/07 | 12 | R$ 32.318,83
+saque: 15/08 | 8 | R$ 25.022,71
