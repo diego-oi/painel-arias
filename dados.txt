@@ -22,6 +22,6 @@ nota:
 
 # Solicitações de saque
 # Formato: data | quantidade de clientes | valor do montante
-saque: 15/07 | 12 | R$ 32.318,83
-saque: 15/08 | 8 | R$ 25.022,71
+saque: 15/07 | 16 | R$ 32.318,83
+saque: 15/08 | 47 | R$ 25.022,71
 info: Valor 2 Ciclos | R$ 61.142,16
